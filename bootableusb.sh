@@ -10,6 +10,7 @@
 
 # Note by cosita:
 #id rather not use this, there is no safety checks, no verification of target device, it can kill your own system
+# use it if youre absolutely sure that /dev/sdb is the correct target device for your usb
 
 echo "Welcome to Bootable USB Maker!"
 echo "We are making ALG Bootable USB, please wait..."

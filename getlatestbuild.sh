@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# ./getlatestbuild.sh <branch>
+# Branch: holoiso-images/latest_$BRANCH.releasemeta - downloads the branch from source
+
 SCRIPT=$(realpath "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 DOWNLOADPATH=${SCRIPTPATH}/airootfs/etc/holoinstall

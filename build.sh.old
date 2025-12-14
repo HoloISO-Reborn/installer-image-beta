@@ -1,7 +1,21 @@
 #!/bin/bash
 
-# ./build.sh 
+# ./build.sh <branch> <builds_directory>
+# Branch: holoiso-images/latest_$BRANCH.releasemeta
+# builds_directory: directory where holoiso-images are built
 
+SCRIPT=$(realpath "$0")
+SCRIPTPATH=$(dirname "$SCRIPT")
+BRANCH="$1"
+if [[ -z "$BRANCH" ]]; then
+    echo "Branch unable to find."
+    exit 0
+fi
+BUILDDIR=$2
+if [[ -z "$BUILDDIR" ]]; then
+    echo "Builds unable to find."
+    exit 0
+fi
 INSTALLDIR="${BUILDDIR}/holoiso-installer/${BRANCH}"
 WORKDIR="/tmp/$(date +%Y%m%d.%H%M.%S)"
 mkdir -p $INSTALLDIR
