@@ -58,6 +58,7 @@ if [[ -z "${output_dir}" ]]; then
     output_dir="out/${BRANCH}"
 fi
 # prep
+echo "Preparing..."
 mkdir -p $output_dir
 rm -rf ${script_path}/airootfs/etc/holoinstall/*zst
 mkdir -p ${script_path}/airootfs/etc/holoinstall
@@ -67,9 +68,9 @@ if [ "$offline" = true ]; then
         echo "Please provide holoiso-images directory path using --images"
         exit 1
     fi
+    echo "Using holoiso-images from: ${holoiso_images_dir}"
     source  ${holoiso_images_dir}/latest_$BRANCH.releasemeta
     cp ${holoiso_images_dir}/${IMAGEFILE}.img.zst ${script_path}/airootfs/etc/holoinstall
-    echo "Building in offline mode."
 else
     echo "Building in online mode. NOTE: Comming soon"
 fi
@@ -77,10 +78,13 @@ fi
 # Sets the iso name in /profiledef.sh
 echo ${IMAGEFILE} > /tmp/currentcandidate
 
+echo "Starting build"
+
 # ACTUALL BUILD
 sudo mkarchiso -v -w ${work} -o ${output_dir} ${script_path}
 
 if [ "$clean" == true ]; then
+    echo "Cleaning..."
     rm -rf ${script_path}/airootfs/etc/holoinstall/*zst
     rm -rf ${work}
 fi
