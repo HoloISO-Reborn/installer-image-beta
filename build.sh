@@ -103,6 +103,26 @@ echo "Starting build"
 # ACTUALL BUILD
 sudo mkarchiso -v -w ${work} -o ${output_dir} ${script_path}
 
+#!/bin/bash
+
+# Directory containing the ISO files (default to current directory)
+DIR=$output_dir
+
+# Loop through all .iso files in the directory
+for iso in "$DIR"/*.iso; do
+    # Skip if no .iso files are found
+    [ -e "$iso" ] || continue
+
+    # Check if the corresponding .sha256 file exists
+    if [ ! -f "$iso.sha256" ]; then
+        # Generate the SHA-256 checksum and save it to a .sha256 file
+        sha256sum "$iso" > "$iso.sha256"
+        echo "Generated SHA-256 checksum for $iso"
+    else
+        echo "SHA-256 checksum already exists for $iso"
+    fi
+done
+
 if [ "$clean" == true ]; then
     echo "Cleaning..."
     rm -rf ${script_path}/airootfs/etc/holoinstall/*zst
