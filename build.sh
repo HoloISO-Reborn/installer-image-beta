@@ -2,6 +2,21 @@
 
 # ./build.sh 
 
+usage="""Usage: build.sh [OPTIONS]
+
+OPTION               ( Required / Optional ) Description
+
+Options:
+  --help                        ( Optional ) Display this help message
+  --images <holoiso-images-dir> ( Required ) Specify the path to the holoiso-images directory
+  --branch <branch-name>        ( Required ) Specify the branch name for the build
+  --offline                     ( Optional ) Build the installer in offline mode (default)
+  --online                      ( Optional ) Build the installer in online mode
+  --online                      ( Optional ) Build the installer in online mode
+  --clean                       ( Optional ) Clean up temporary files after build
+  --output-dir <output-dir>     ( Optional ) Specify the output directory for the built installer (default: out/<branch-name>)
+"""
+
 #VARS
 _SCRIPT=$(realpath "$0")
 script_path=$(dirname "$_SCRIPT")
@@ -48,8 +63,13 @@ while [[ "$#" -gt 0 ]]; do
             shift
             shift
             ;;
+        --help)
+            echo $usage
+            shift
+            exit 0
+            ;;
         *)
-        echo "Unknown flag: $1"
+        echo "Unknown flag: $1\n For usage, use --help"
         exit 1
         ;;
     esac
