@@ -53,7 +53,7 @@ while [[ "$#" -gt 0 ]]; do
         exit 1
         ;;
     esac
-doney
+done
 if [[ -z "${output_dir}" ]]; then
     output_dir="out/${BRANCH}"
 fi
