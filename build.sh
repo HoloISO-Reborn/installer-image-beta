@@ -83,6 +83,8 @@ mkdir -p $output_dir
 rm -rf ${script_path}/airootfs/etc/holoinstall/*zst
 mkdir -p ${script_path}/airootfs/etc/holoinstall
 
+cp -p ${script_path}/customize-airootfs.sh ${script_path}/airootfs/root/customize_airootfs.sh
+
 if [ "$offline" = true ]; then
     if [[ -z "${holoiso_images_dir}" ]]; then
         echo "Please provide holoiso-images directory path using --images"
