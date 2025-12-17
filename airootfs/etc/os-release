@@ -1,10 +1,13 @@
 NAME="SteamOS"
-PRETTY_NAME="HoloISO SteamOS"
+PRETTY_NAME="SteamOS"
+VERSION_CODENAME=holo
 ID=steamos
+ID_LIKE=arch
 VERSION_ID=TEMPLATE_VERSION_ID
-ANSI_COLOR="38;2;23;147;209"
+ANSI_COLOR="1;35"
 HOME_URL="https://github.com/HoloISO-Reborn"
 DOCUMENTATION_URL="https://steam.wiki.gd/"
 SUPPORT_URL="https://t.me/HoloISO/"
 BUG_REPORT_URL="https://github.com/HoloISO-Reborn/issuetracker/issues"
 PRIVACY_POLICY_URL="https://terms.archlinux.org/docs/privacy-policy/"
+LOGO=steamos
