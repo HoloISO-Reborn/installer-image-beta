@@ -65,7 +65,7 @@ while [[ "$#" -gt 0 ]]; do
             ;;
         --type)
             TYPE="$2"
-            if [[ TYPE != "full" && TYPE != "online" ]]; then
+            if [[ "$TYPE" != "full" && "$TYPE" != "online" ]]; then
                 echo "Invalid type specified. Allowed values are 'full' or 'online'."
                 exit 1
             fi
