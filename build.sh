@@ -99,7 +99,9 @@ cp -p ${script_path}/customize-airootfs.sh ${script_path}/airootfs/root/customiz
 
 if [ "$TYPE" == "online" ]; then
     echo "Building in online installer. NOTE: Comming soon"
-else if [ "$TYPE" == "full" ]; then
+    echo "online" > ${script_path}/airootfs/etc/installer_type
+
+elif [ "$TYPE" == "full" ]; then
     if [ "$offline" = true ]; then
         if [[ -z "${holoiso_images_dir}" ]]; then
             echo "Please provide holoiso-images directory path using --images"
