@@ -12,7 +12,7 @@ Options:
   --branch <branch-name>        ( Required ) Specify the branch name for the build
   --offline                     ( Optional ) Build the installer in offline mode (default)
   --online                      ( Optional ) Build the installer in online mode
-  --online                      ( Optional ) Build the installer in online mode
+  --type                        ( Optional ) Specify the type of installer to build (default: full; full, online)
   --clean                       ( Optional ) Clean up temporary files after build
   --output-dir <output-dir>     ( Optional ) Specify the output directory for the built installer (default: out/<branch-name>)
 """
@@ -63,6 +63,15 @@ while [[ "$#" -gt 0 ]]; do
             shift
             shift
             ;;
+        --type)
+            TYPE="$2"
+            if [[ TYPE != "full" && TYPE != "online" ]]; then
+                echo "Invalid type specified. Allowed values are 'full' or 'online'."
+                exit 1
+            fi
+            shift
+            shift
+            ;;
         --help)
             echo $usage
             shift
@@ -74,6 +83,9 @@ while [[ "$#" -gt 0 ]]; do
         ;;
     esac
 done
+if [[ -z "${TYPE}" ]]; then
+    TYPE="full"
+fi
 if [[ -z "${output_dir}" ]]; then
     output_dir="out/${BRANCH}"
 fi
@@ -85,18 +97,21 @@ mkdir -p ${script_path}/airootfs/etc/holoinstall
 
 cp -p ${script_path}/customize-airootfs.sh ${script_path}/airootfs/root/customize_airootfs.sh
 
-if [ "$offline" = true ]; then
-    if [[ -z "${holoiso_images_dir}" ]]; then
-        echo "Please provide holoiso-images directory path using --images"
-        exit 1
+if [ "$TYPE" == "online" ]; then
+    echo "Building in online installer. NOTE: Comming soon"
+else if [ "$TYPE" == "full" ]; then
+    if [ "$offline" = true ]; then
+        if [[ -z "${holoiso_images_dir}" ]]; then
+            echo "Please provide holoiso-images directory path using --images"
+            exit 1
+        fi
+        echo "Using holoiso-images from: ${holoiso_images_dir}"
+        source  ${holoiso_images_dir}/latest_$BRANCH.releasemeta
+        cp ${holoiso_images_dir}/${IMAGEFILE}.img.zst ${script_path}/airootfs/etc/holoinstall
+    else
+        echo "Building in online mode. NOTE: Comming soon"
     fi
-    echo "Using holoiso-images from: ${holoiso_images_dir}"
-    source  ${holoiso_images_dir}/latest_$BRANCH.releasemeta
-    cp ${holoiso_images_dir}/${IMAGEFILE}.img.zst ${script_path}/airootfs/etc/holoinstall
-else
-    echo "Building in online mode. NOTE: Comming soon"
 fi
-
 # Sets the iso name in /profiledef.sh
 echo ${IMAGEFILE} > /tmp/currentcandidate
 
