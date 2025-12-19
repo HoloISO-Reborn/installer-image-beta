@@ -95,8 +95,6 @@ mkdir -p $output_dir
 rm -rf ${script_path}/airootfs/etc/holoinstall/*zst
 mkdir -p ${script_path}/airootfs/etc/holoinstall
 
-cp -p ${script_path}/customize-airootfs.sh ${script_path}/airootfs/root/customize_airootfs.sh
-
 if [ "$TYPE" == "online" ]; then
     echo "Building in online installer. NOTE: Comming soon"
     echo "online" > ${script_path}/airootfs/etc/installer_type
