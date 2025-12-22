@@ -98,6 +98,7 @@ mkdir -p ${script_path}/airootfs/etc/holoinstall
 if [ "$TYPE" == "online" ]; then
     echo "Building in online installer. NOTE: Comming soon"
     echo "online" > ${script_path}/airootfs/etc/installer_type
+    echo ${BRANCH} > ${script_path}/airootfs/etc/installer_branch
     IMAGEFILE="holoiso_${BRANCH}_online"
 elif [ "$TYPE" == "full" ]; then
     if [ "$offline" = true ]; then
