@@ -6,4 +6,5 @@ cp -R /root/holoiso-installer/* /
 cd -
 chmod +x -R /usr/bin /etc/lib /etc/X11 /home/holoiso/Desktop
 systemctl enable sddm
+pacman -R --noconfirm plasma-welcome
 plymouth-set-default-theme -R steamos
