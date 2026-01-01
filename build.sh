@@ -134,7 +134,7 @@ for iso in "$DIR"/*.iso; do
     # Check if the corresponding .sha256 file exists
     if [ ! -f "$iso.sha256" ]; then
         # Generate the SHA-256 checksum and save it to a .sha256 file
-        sha256sum "$iso" > "$iso.sha256"
+        sha256sum "$iso" | awk '{print $1}' > "$iso.sha256"
         echo "Generated SHA-256 checksum for $iso"
     else
         echo "SHA-256 checksum already exists for $iso"
