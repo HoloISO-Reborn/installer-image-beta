@@ -1,0 +1,12 @@
+background-color: "0,0,0"
+
+desktop-image: "logo.png"
+desktop-image-left: 50%
+desktop-image-vertical-margin: 10%
+
+# Menu colors
+normal-color: "white/0,50,100"
+selected-color: "cyan/0,50,100"
+
+menu-left: 50%
+menu-top: 35%
