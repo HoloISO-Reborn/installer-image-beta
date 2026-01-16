@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 
 iso_name="$(cat /tmp/currentcandidate)"
-iso_label="ALG_XFCE_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
+iso_label="HOLOISO_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
 iso_publisher="me"
 iso_application="Screaming in public restrooms part three"
 iso_version="InstallerBuild-$(date +%Y%m%d%H%M%S)"
