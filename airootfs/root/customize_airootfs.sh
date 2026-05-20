@@ -9,3 +9,4 @@ systemctl enable sddm
 pacman -Rdd plasma-welcome --noconfirm
 pip install customtkinter --break
 plymouth-set-default-theme -R steamos
+dconf update

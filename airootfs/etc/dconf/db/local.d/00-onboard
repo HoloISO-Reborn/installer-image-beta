@@ -1,0 +1,43 @@
+[/]
+layout='/usr/share/onboard/layouts/Compact.onboard'
+schema-version='2.3'
+snippets=@as []
+system-theme-associations={'HighContrast': 'HighContrast', 'HighContrastInverse': 'HighContrastInverse', 'LowContrast': 'LowContrast', 'ContrastHighInverse': 'HighContrastInverse', 'Default': '', 'Mint-Y-Dark-Purple': '/usr/share/onboard/themes/Droid.theme'}
+theme='/usr/share/onboard/themes/Droid.theme'
+use-system-defaults=false
+xembed-onboard=false
+
+[auto-show]
+enabled=true
+hide-on-key-press=true
+hide-on-key-press-pause=0.0
+reposition-method-docked='none'
+
+[icon-palette]
+in-use=false
+window-handles='E SE S SW W NW N NE M'
+
+[keyboard]
+audio-feedback-enabled=true
+touch-feedback-enabled=true
+
+[scanner]
+enabled=false
+
+[theme-settings]
+background-gradient=0.0
+color-scheme='/usr/share/onboard/themes/Granite.colors'
+key-fill-gradient=4.0
+key-gradient-direction=-5.0
+key-label-font=''
+key-label-overrides=@as []
+key-shadow-size=30.0
+key-shadow-strength=70.0
+key-size=95.0
+key-stroke-gradient=15.0
+key-stroke-width=100.0
+key-style='gradient'
+roundrect-radius=20.0
+
+[window]
+docking-enabled=true
