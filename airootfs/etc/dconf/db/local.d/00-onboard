@@ -1,4 +1,4 @@
-[/]
+[org/onboard]
 layout='/usr/share/onboard/layouts/Compact.onboard'
 schema-version='2.3'
 snippets=@as []
@@ -7,24 +7,24 @@ theme='/usr/share/onboard/themes/Droid.theme'
 use-system-defaults=false
 xembed-onboard=false
 
-[auto-show]
+[org/onboard/auto-show]
 enabled=true
 hide-on-key-press=true
 hide-on-key-press-pause=0.0
 reposition-method-docked='none'
 
-[icon-palette]
+[org/onboard/icon-palette]
 in-use=false
 window-handles='E SE S SW W NW N NE M'
 
-[keyboard]
+[org/onboard/keyboard]
 audio-feedback-enabled=true
 touch-feedback-enabled=true
 
-[scanner]
+[org/onboard/scanner]
 enabled=false
 
-[theme-settings]
+[org/onboard/theme-settings]
 background-gradient=0.0
 color-scheme='/usr/share/onboard/themes/Granite.colors'
 key-fill-gradient=4.0
@@ -39,5 +39,5 @@ key-stroke-width=100.0
 key-style='gradient'
 roundrect-radius=20.0
 
-[window]
+[org/onboard/window]
 docking-enabled=true
