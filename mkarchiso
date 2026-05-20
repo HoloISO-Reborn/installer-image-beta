@@ -180,6 +180,7 @@ _run_mksquashfs() {
     local mksquashfs_options=() image_path="${isofs_dir}/${install_dir}/${arch}/airootfs.sfs"
     rm -f -- "${image_path}"
     [[ ! "${quiet}" == "y" ]] || mksquashfs_options+=('-no-progress' '-quiet')
+    mksquashfs_options+=('-processors' "$(nproc)")
     mksquashfs "$@" "${image_path}" -noappend "${airootfs_image_tool_options[@]}" "${mksquashfs_options[@]}"
 }
 
@@ -1820,6 +1821,13 @@ _set_overrides() {
 
     # Set variables that do not have overrides
     [[ -n "$airootfs_image_type" ]] || airootfs_image_type="squashfs"
+    if [[ "${airootfs_image_type}" == "squashfs" && ${#airootfs_image_tool_options[@]} -eq 0 ]]; then
+        airootfs_image_tool_options=(
+            '-comp' 'zstd'
+            '-Xcompression-level' '15'
+            '-processors' "$(nproc)"
+        )
+    fi
     [[ -n "$iso_name" ]] || iso_name="${app_name}"
     # Precalculate the ISO's modification date in UTC, i.e. its "UUID"
     TZ=UTC printf -v iso_uuid '%(%F-%H-%M-%S-00)T' "$SOURCE_DATE_EPOCH"
